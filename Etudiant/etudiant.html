@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/monstyle.css" />
+    <title>Etudiant</title>
+
+    <style>
+        tr[pour='vrai']:hover {
+            background-color: rgb(0, 192, 255);
+            border: 1px solid rgb(0, 192, 255);
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="container">
+            <h2 class="bg-primary text-white text-center p-3">GESTION<br />DES ETUDIANTS</h2>
+        </div>
+
+        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab">
+
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#new-etd" type="button">Enregistrement</button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#list-etd" type="button">Liste des
+                    etudiants</button>
+            </li>
+
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+
+            <div class="tab-pane fade" id="new-etd">
+                <!-- Zone etd -->
+
+                <div class="container">
+                    <div class="row my-3 justify-content-md-center">
+
+                        <div class="card col-10 align-self-center">
+                            <div class="card-body">
+                                <h5 class="card-title my-3 mb-5">Entrez les informations de l'etudiant</h5>
+
+                                <div class="container">
+                                    <div class="row my-3 justify-content-md-between">
+                                        <div class="col-6">
+                                            <form>
+                                                <label class="form-label">Nom<span class="text-danger"><sup>*</sup></span></label>
+                                                <input type='text' class="form-control" id='txt_nom' required />
+
+                                                <label class="form-label">Prenom<span class="text-danger"><sup>*</sup></span></label>
+                                                <input type='text' class="form-control" id='txt_prenom' required />
+
+                                                <label class="form-label">Lieu de naissance<span class="text-danger"><sup>*</sup></span></label>
+                                                <input type='text' class="form-control" id='txt_lnais' required />
+
+                                                <div class="row mt-3">
+                                                    <div class="col-5">
+                                                        <label class="form-label">Matieres</label>
+                                                        <select class="form-select" id="matiere">
+                                                            <option value="1" disabled selected>Choisir votre matiere</option>
+                                                            <option value="DOM">DOM</option>
+                                                            <option value="JavaScript">JavaScript</option>
+                                                            <option value="PHP">PHP</option>
+                                                            <option value="CSS">CSS</option>
+                                                            <option value="HTML">HTML</option>
+                                                            <option value="ALGO">ALGO</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <label class="form-label">Note</label>
+                                                        <input type='number' class="form-control" id='txt_note' />
+                                                    </div>
+
+                                                    <div class="col-4">
+                                                        <br />
+                                                        <a class="btn btn-success mt-2" id="btn_addM">Ajouter</a>
+                                                    </div>
+
+                                                    <div class="col-12 mt-3">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Matiere</th>
+                                                                    <th>Note</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody id="tab_note"></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+
+                                                <a class="btn btn-primary mt-3" id="btn_save">Enregistrer</a>
+                                                <button type="reset" class="btn btn-danger mt-3">Effacer</button>
+                                        </div>
+
+                                        <div class="col-5">
+                                            <label class="form-label">Parcours<span class="text-danger"><sup>*</sup></span></label>
+                                            <select class="form-select" id="parcours" required>
+                                                <option value="1" disabled selected>Choisir votre parcours</option>
+                                                <option value="Developpement web" >Developpement web</option>
+                                                <option value="Data science">Data science</option>
+                                                <option value="Art numerique">Art numerique</option>
+                                            </select>
+
+                                            <div class="row mt-3">
+                                                <div class="col-6">
+                                                    <label class="form-label">Poids<span class="text-danger"><sup>*</sup></span></label>
+                                                    <input type='number' class="form-control" id='txt_poids' required />
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <label class="form-label">Taille (en cm)<span class="text-danger"><sup>*</sup></span></label>
+                                                    <input type='number' class="form-control" id='txt_taille' required />
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3 mb-3">
+                                                <span class="mb-3">Sexe<span class="text-danger"><sup>*</sup></span></span>
+                                                <div class="col-6">
+                                                    <input type="radio" name="sexe" id="hom" value="Homme"></button>
+                                                    <label class="form-label">Homme</label>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <input type="radio" name="sexe" id="fem" value="Femme"></button>
+                                                    <label class="form-label">Femme</label>
+                                                </div>
+                                            </div>
+
+
+                                            <label class="form-label">Date de naissance<span class="text-danger"><sup>*</sup></span></label>
+                                            <input type='date' class="form-control" id='txt_dnais' required />
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-6">
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade show active" id="list-etd">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-9 card">
+                            <div class="card=body">
+                                <h5 class="card-title my-3 mb-3">Liste des etudiants</h5>
+                                <table class="table table-bordered mt-4" id="info_tab">
+                                    <thead>
+                                        <th>No.</th>
+                                        <th>Nom & Prenom</th>
+                                        <th>Date naissance</th>
+                                        <th>Lieu de naissance</th>
+                                        <th>Sexe</th>
+                                        <th>Parcours</th>
+                                        <th>Action</th>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <div class="col-3">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title my-3 mb-3">Details</h5>
+                                    <p id="lenom"></p>
+                                    <p id="leprenom"></p>
+                                    <p id="ledate"></p>
+                                    <p id="leparcours"></p>
+                                    <p id="lepersonne"></p>
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Matiere</th>
+                                                <th>Note</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="tab_mynote">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="tab-pane fade" id="pills-contact">3</div>
+
+                </div>
+
+            </div>
+
+
+            <script src="./js/bootstrap.bundle.min.js"></script>
+            <script src="./js/etudiant.js"></script>
+            <script src="./js/matieres.js"></script>
+
+</body>
+
+</html>
