@@ -32,9 +32,15 @@ _addMatiereButton.addEventListener('click', () => {
     let _tr = document.createElement('tr');
     let _tdM = document.createElement('td'); _tdM.innerHTML = _matiere;
     let _tdN = document.createElement('td'); _tdN.innerHTML = _note;
+    let _tdAction = document.createElement('td');
+    let _btnDele = document.createElement('button'); _btnDele.innerHTML = '-';
+    let _btnMore = document.createElement('button'); _btnMore.innerHTML = '+';
 
+    _tdAction.appendChild(_btnMore);
+    _tdAction.appendChild(_btnDele);
     _tr.appendChild(_tdM);
     _tr.appendChild(_tdN);
+    _tr.appendChild(_tdAction);
 
     document.getElementById('tab_note').appendChild(_tr);
 
@@ -163,7 +169,6 @@ function showStudentDetailledInfos(_studentId) {
             let _tr = document.createElement('tr');
             let _tdMat = document.createElement('td'); _tdMat.innerHTML = note.nom;
             let _tdNot = document.createElement('td'); _tdNot.innerHTML = note.note;
-
             _tr.appendChild(_tdMat);
             _tr.appendChild(_tdNot);
             _tab_note.appendChild(_tr);
